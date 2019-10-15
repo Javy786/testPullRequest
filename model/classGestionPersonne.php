@@ -14,6 +14,31 @@ class gestionMembre extends connect{
         "mdp" => $membre->getMdp()]);
     }
 
+    public function recupMembre(){
+
+$query = "SELECT * FROM membre";
+$recup = $this->Database()->query($query);
+$tab = [];
+while($donnees = $recup->fetch()){
+   $member = new Membre($donnees);
+   $tab[] = $member;
+}
+return $tab;
+}
+
+
+public function recupLeMembre($id){
+    $query="SELECT * from membre WHERE id=$id";
+    $show=$this->Database()->prepare($query);
+    $show->execute();
+    $tab = [];
+while($show1 = $show->fetch()){
+   $member = new Membre($show1);
+   $tab[] = $member;
+}
+    return $tab;
+}
+
 }
 
 ?>

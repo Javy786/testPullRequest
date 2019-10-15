@@ -13,6 +13,15 @@ if (isset($action)){
     else if($action == "inscription"){
         require 'view/inscription.php';
     }
+    else if ($action == "pageMembre"){
+        require 'view/recupMembre.php';
+    }
+    else if ($action == "modifMembre"){
+require 'view/modifMembre.php';
+    }
+    if (isset($id)){
+
+    }
 }
 else{
 require 'view/accueil.php';
