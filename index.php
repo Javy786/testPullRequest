@@ -17,11 +17,14 @@ if (isset($action)){
         require 'view/recupMembre.php';
     }
     else if ($action == "modifMembre"){
-require 'view/modifMembre.php';
+        require 'view/modifMembre.php';
     }
-    if (isset($id)){
+    
+    else if ($action == "updateMembre"){
+        updateMembre($id, $_POST);
+    }
 
-    }
+    
 }
 else{
 require 'view/accueil.php';

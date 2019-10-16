@@ -39,6 +39,16 @@ while($show1 = $show->fetch()){
     return $tab;
 }
 
+public function updateCeMembre($id, array $donnees){
+    $member = new Membre($donnees);
+    $query = "UPDATE membre SET pseudo = :pseudo, email = :email, mdp = :mdp WHERE id = $id";
+    $show=$this->Database()->prepare($query);
+    $show->execute(array(
+        "pseudo" => $member->getPseudo(),
+        "email" => $member->getEmail(),
+        "mdp" => $member->getMdp()));
+}
+
 }
 
 ?>

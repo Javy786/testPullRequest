@@ -18,4 +18,11 @@ function recupMoiCeMembre($id){
 global $gestion;
 return $gestion->recupLeMembre($id); 
 }
+
+function updateMembre($id, array $data){
+global $gestion;
+$gestion->updateCeMembre($id, $data);
+
+header("location: index.php?action=modifMembre&id=$id");
+}
 ?>
