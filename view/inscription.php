@@ -3,6 +3,7 @@
 
 <h1>Page d'inscription</h1>
 
+<!-- formulaire d'inscription de nos membres -->
 <form method="post">
 
 <input name="pseudo" type="text" placeholder="pseudo">

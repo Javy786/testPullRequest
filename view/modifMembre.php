@@ -3,8 +3,10 @@
 
 <h1>Page de modif membre</h1>
 
+<!-- fonction qui nous affiche le membre sélectionné via son id -->
 <?php  $show = recupMoiCeMembre($id); 
 
+// boucle qui récupère les informations du membre choisis
 foreach ($show as $value) {
     echo "<form action='index.php?action=updateMembre&id=". $value->getId()."' method='post'>";
  echo "Pseudo: <input name='pseudo' type='text' value='".$value->getPseudo()."'><br>";
