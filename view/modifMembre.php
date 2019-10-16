@@ -12,8 +12,9 @@ foreach ($show as $value) {
  echo "Mot de passe: <input name='mdp'type='text' value='".$value->getMdp()."'>";
 }
 echo '<br>';
-echo '<input type="submit" value="confirmer">';
+echo '<input type="submit" value="modifier">';
 echo "</form>";
+echo '<a href="index.php?action=delete&id=' .$id.'"><button>supprimer</button></a>';
 
 ?>
 

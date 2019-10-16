@@ -23,8 +23,11 @@ if (isset($action)){
     else if ($action == "updateMembre"){
         updateMembre($id, $_POST);
     }
-
     
+    elseif($action == "delete"){
+        deleteMembre($id);
+    }
+   
 }
 else{
 require 'view/accueil.php';

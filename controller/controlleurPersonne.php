@@ -6,7 +6,7 @@ $gestion = new gestionMembre();
 if(isset($_POST["envoie"])) {
 $membre = new membre($_POST);
 $gestion->insertMembre($membre);
-header("location: index.php?action=accueil");
+header("location: index.php?action=pageMembre");
 }
 
 function afficherMembre(){
@@ -25,4 +25,12 @@ $gestion->updateCeMembre($id, $data);
 
 header("location: index.php?action=modifMembre&id=$id");
 }
+
+function deleteMembre($id){
+    global $gestion;
+$gestion->deleteCeMembre($id);
+
+header("location: index.php?action=pageMembre");
+}
+
 ?>

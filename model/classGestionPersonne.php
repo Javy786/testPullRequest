@@ -49,6 +49,12 @@ public function updateCeMembre($id, array $donnees){
         "mdp" => $member->getMdp()));
 }
 
+public function deleteCeMembre($id){
+    $query = "DELETE FROM membre WHERE id=$id";
+    $delete = $this->Database()->prepare($query);
+    $delete->execute();
+}
+
 }
 
 ?>
