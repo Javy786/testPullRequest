@@ -3,38 +3,34 @@ require 'model/classGestionPersonne.php';
 
 $gestion = new gestionMembre();
 
-// Lorsque l'on appuie sur le bouton d'inscription
 if(isset($_POST["envoie"])) {
-$membre = new membre($_POST);
-$gestion->insertMembre($membre);
-header("location: index.php?action=pageMembre");
+	$membre = new membre($_POST);
+	$gestion->insertMembre($membre);
+	header("location: index.php?action=pageMembre");
 }
 
-// retourne la fonction qui permet d'afficher la liste des membres
-function afficherMembre(){
-global $gestion;
-return $gestion->recupMembre();
+function afficherMembres(){
+	global $gestion;
+	$membres = $gestion->recupMembres();
+	require'view/recupMembre.php';
 }
 
-// retourne la fonction qui permet d'afficher les données du membre séléctionné
 function recupMoiCeMembre($id){
-global $gestion;
-return $gestion->recupLeMembre($id); 
+	global $gestion;
+	$membre = $gestion->recupLeMembre($id);
+	require'view/modifMembre.php';
 }
 
-// joue la fonction qui permet de modifier les données du membre sélectionnés
 function updateMembre($id, array $data){
-global $gestion;
-$gestion->updateCeMembre($id, $data);
-header("location: index.php?action=pageMembre");
+	global $gestion;
+	$gestion->updateCeMembre($id, $data);
+	header("location: index.php?action=modifMembre&id=$id");
 }
 
-// joue la fonction qui permet de supprimer les données du membre sélectionnés
 function deleteMembre($id){
     global $gestion;
-$gestion->deleteCeMembre($id);
-
-header("location: index.php?action=pageMembre");
+	$gestion->deleteCeMembre($id);
+	header("location: index.php?action=pageMembre");
 }
 
 ?>

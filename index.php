@@ -1,50 +1,48 @@
 <?php 
 require 'controller/controlleurPersonne.php';
 
-// on extrait le get pour ne pas avoir besoin de le réécrire
-extract($_GET);
 
-// page d'accueil
-if (isset($action)){
-    if ($action == "accueil"){
-        require 'view/accueil.php';
-    }
+if(!empty($_GET)){
+    extract($_GET);
+    if (isset($action)){
+        switch ($action){
+            case 'accueil':
+                require 'view/accueil.php';
+                break;
+        
+            case "contact":
+                require 'view/contact.php';
+                break;
+        
+            case "inscription":
+                require 'view/inscription.php';
+                break;
 
-    //page de contact
-    else if($action == "contact"){
-        require 'view/contact.php';
-    }
+            case "pageMembre":
+                afficherMembres();
+                break;
 
-    // page d'inscription
-    else if($action == "inscription"){
-        require 'view/inscription.php';
-    }
+            case "modifMembre":
+                recupMoiCeMembre($id);
+                break;
+        
+            case "updateMembre":
+                updateMembre($id, $_POST);
+                break;
+        
+            case "delete":
+                deleteMembre($id);
+                break; 
 
-    // page avec la liste de nos membres
-    else if ($action == "pageMembre"){
-        require 'view/recupMembre.php';
+            default:
+                require'view/error404.php';
+                break;   
+        }
+    }else{
+        require'view/error404.php';
     }
-
-    // page qui permet de modifier les données de nos membres
-    else if ($action == "modifMembre"){
-        require 'view/modifMembre.php';
-    }
-    
-    // après avoir appuyé sur le bouton (modifier) de la page de modification
-    else if ($action == "updateMembre"){
-        updateMembre($id, $_POST);
-    }
-    
-    //après avoir appuyé sur le bouton (supprimer) de la page de modification
-    elseif($action == "delete"){
-        deleteMembre($id);
-    }
-   
-}
-
-// si aucune redirection trouvé, renvoie sur l'accueil
-else{
-require 'view/accueil.php';
+}else{
+    require 'view/accueil.php';
 }
 
 ?>

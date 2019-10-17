@@ -1,7 +1,4 @@
 <?php $titre = "accueil"; ?>
-
-<!-- page d'accueil vide -->
-
 <?php ob_start(); ?>
 
 <h1>Page d'accueil</h1>
